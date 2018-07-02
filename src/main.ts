@@ -14,19 +14,21 @@ class Main {
         this.app.renderer.backgroundColor = 0x061639;
     }
 
-    public init() {
+    public init() { 
         document.body.appendChild(this.app.view);
         PIXI.loader
             .add("src/assets/images/cat.png")
-            .load(this.setup(this.app));
-    }
+            .load(this.setup(this.app)); 
+    } 
 
     private setup(app: PIXI.Application) {
         return () => {
             let cat = new PIXI.Sprite(PIXI.loader.resources["src/assets/images/cat.png"].texture);
-            app.stage.addChild(cat);
+            cat.x = 50; 
+            cat.y = 50;
+            app.stage.addChild(cat); 
         };
-    }
+    } 
 }
 
 const main = new Main();
