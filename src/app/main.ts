@@ -17,13 +17,13 @@ class Main {
     public init() { 
         document.body.appendChild(this.app.view);
         PIXI.loader
-            .add("src/assets/images/cat.png")
+            .add("assets/images/cat.png")
             .load(this.setup(this.app)); 
     } 
 
     private setup(app: PIXI.Application) {
         return () => {
-            let cat = new PIXI.Sprite(PIXI.loader.resources["src/assets/images/cat.png"].texture);
+            let cat = new PIXI.Sprite(PIXI.loader.resources["assets/images/cat.png"].texture);
             cat.x = 50; 
             cat.y = 50;
             app.stage.addChild(cat); 
@@ -32,7 +32,7 @@ class Main {
 }
 
 const main = new Main();
-main.init();  
+main.init();
 
 
 

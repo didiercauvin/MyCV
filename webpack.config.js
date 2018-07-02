@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: "development",
-  entry: './src/main.ts',
+  entry: ['./src/app/main.ts'],
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -18,13 +18,14 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: "/js/",
+    path: path.resolve(__dirname, 'src/public/js')
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    publicPath: '/./',
-    host: '127.0.0.1',
-    port: 8080,
-    open: true
+    contentBase: __dirname + "/src/public/",
+    historyApiFallback: true,
+    inline: true,
+    progress: true,
+    headers: { "Access-Control-Allow-Origin": "*" }
   }
 };
