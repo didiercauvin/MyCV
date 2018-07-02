@@ -16,11 +16,21 @@ class Main {
 
     public init() {
         document.body.appendChild(this.app.view);
+        PIXI.loader
+            .add("src/assets/images/cat.png")
+            .load(this.setup(this.app));
+    }
+
+    private setup(app: PIXI.Application) {
+        return () => {
+            let cat = new PIXI.Sprite(PIXI.loader.resources["src/assets/images/cat.png"].texture);
+            app.stage.addChild(cat);
+        };
     }
 }
 
 const main = new Main();
-main.init();
+main.init();  
 
 
 
